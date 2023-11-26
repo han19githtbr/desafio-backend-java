@@ -62,8 +62,8 @@ public class PessoaController {
             @RequestParam String dataCriacao,
             @RequestParam long duracao) throws IOException {
 
-		LocalDateTime dataCriacaoConverted = LocalDateTime.parse(dataCriacao, DateTimeFormatter.ISO_DATE_TIME);
-		PessoaDTO pessoaDTO = pessoaService.buscarPorNome(nome, dataCriacaoConverted, duracao);
+		LocalDateTime dataCriacaoConvertida = LocalDateTime.parse(dataCriacao, DateTimeFormatter.ISO_DATE_TIME);
+		PessoaDTO pessoaDTO = pessoaService.buscarPorNome(nome, dataCriacaoConvertida, duracao);
 
         return pessoaDTO;
     }

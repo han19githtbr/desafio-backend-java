@@ -37,7 +37,6 @@ public class TarefaController {
 		
 		return tarefaDTO;
 	}
-
 	
     @PutMapping("/alocar/{tarefaId}/{pessoaId}")
     public TarefaDTO alocarPessoaNaTarefa(
@@ -46,7 +45,6 @@ public class TarefaController {
         TarefaDTO tarefaDTO = tarefaService.alocarPessoaNaTarefa(tarefaId, pessoaId);
         return tarefaDTO;
     }
-
     
     @PutMapping("/finalizar/{tarefaId}")
     public TarefaDTO finalizarTarefa(@PathVariable Long tarefaId) {
@@ -65,5 +63,4 @@ public class TarefaController {
     public List<TarefaDTO> listarTarefasPendentes() {
         return tarefaService.listarTarefasPendentes();
     }
-
 }

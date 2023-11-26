@@ -49,18 +49,18 @@ public class TarefaService {
 	}
 
 	public TarefaDTO alocarPessoaNaTarefa(Long tarefaId, Long pessoaId) {
-	    Tarefa tarefa = tarefaRepository.findById(tarefaId).orElseThrow(() -> new EntityNotFoundException("Tarefa não encontrada."));
-	    Pessoa pessoa = pessoaRepository.findById(pessoaId).orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
+	    Tarefa tarefa = tarefaRepository.findById(tarefaId)
+	    		.orElseThrow(() -> new EntityNotFoundException("Tarefa não encontrada."));
+	    Pessoa pessoa = pessoaRepository.findById(pessoaId)
+	    		.orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
 	    TarefaDTO tarefaDTO = new TarefaDTO();
-
-	    // Verificar se a pessoa pertence ao mesmo departamento da tarefa
+	    
 	    if (!pessoa.getDepartamento().equals(tarefa.getDepartamento())) {
 	        tarefaDTO.setSuccess(Boolean.FALSE);
 	        tarefaDTO.setMensagem("A pessoa não pertence ao mesmo departamento da tarefa.");
 	        return tarefaDTO;
 	    }
-
-	    // Alocar a pessoa na tarefa
+	    
 	    tarefa.setDataCriacao(LocalDateTime.now());
 	    tarefa.setPessoa(pessoa);
 	    tarefaRepository.save(tarefa);
@@ -72,17 +72,16 @@ public class TarefaService {
 	}
 
 	public TarefaDTO finalizarTarefa(Long tarefaId) {
-	    Tarefa tarefa = tarefaRepository.findById(tarefaId).orElseThrow(() -> new EntityNotFoundException("Tarefa não encontrada."));
+	    Tarefa tarefa = tarefaRepository.findById(tarefaId)
+	    		.orElseThrow(() -> new EntityNotFoundException("Tarefa não encontrada."));
 	    TarefaDTO tarefaDTO = new TarefaDTO();
-
-	    // Verificar se a tarefa já foi finalizada anteriormente
+	    
 	    if (tarefa.isFinalizado()) {
 	        tarefaDTO.setSuccess(Boolean.TRUE);
 	        tarefaDTO.setMensagem("A tarefa já foi finalizada anteriormente.");
 	        return tarefaDTO;
 	    }
-
-	    // Finalizar a tarefa
+	    
 	    tarefa.setFinalizado(true);
 	    tarefa.setDuracao(tarefa.getDuracao());
 	    tarefaRepository.save(tarefa);
@@ -111,8 +110,8 @@ public class TarefaService {
 	
 	public List<TarefaDTO> listarTarefasPendentes() {
         List<TarefaDTO> tarefasPendentes = new ArrayList<>();
-        Pageable pageable = PageRequest.of(0, 3);  // Obtém as 3 primeiras tarefas
-        List<Tarefa> tarefas = tarefaRepository.findTarefasSemAlocacaoOrderByPrazo(pageable);
+        Pageable pageable = PageRequest.of(0, 3);
+        List<Tarefa> tarefas = tarefaRepository.findTarefasSemAlocacao(pageable);
 
         for (Tarefa tarefa : tarefas) {
             TarefaDTO tarefaDTO = new TarefaDTO();

@@ -14,6 +14,6 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 		       "LEFT JOIN t.pessoa p " +
 		       "WHERE p IS NULL " +
 		       "ORDER BY t.prazo ASC")
-	List<Tarefa> findTarefasSemAlocacaoOrderByPrazo(Pageable pageable);
+	List<Tarefa> findTarefasSemAlocacao(Pageable pageable);
 
 }

@@ -25,14 +25,13 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 	List<Pessoa> getAllPessoa();
 	
 	@Query("SELECT p FROM Pessoa p WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :nome, '%'))")
-    List<Pessoa> findByNome(@Param("nome") String nome);
+    List<Pessoa> findByName(@Param("nome") String nome);
 	
 	@Query("SELECT t FROM Tarefa t " +
 		       "JOIN t.pessoa p " +
 		       "WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :nome, '%')) " +
 		       "AND t.dataCriacao = :dataCriacao " +
 		       "AND t.duracao = :duracao")
-	List<Tarefa> findByNomeAndPeriodo(@Param("nome") String nome, @Param("dataCriacao") LocalDateTime dataCriacao, @Param("duracao") long duracao);
-	
+	List<Tarefa> findByNameAndPeriod(@Param("nome") String nome, @Param("dataCriacao") LocalDateTime dataCriacao, @Param("duracao") long duracao);
 	
 }

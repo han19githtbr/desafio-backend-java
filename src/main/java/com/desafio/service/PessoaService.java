@@ -95,7 +95,7 @@ public class PessoaService {
 	
 	public PessoaDTO buscarPorNome(String nome, LocalDateTime dataCriacao, long duracao) {
 	    PessoaDTO pessoaDTO = new PessoaDTO();
-	    List<Pessoa> pessoas = pessoaRepository.findByNome(nome);
+	    List<Pessoa> pessoas = pessoaRepository.findByName(nome);
 
 	    if (pessoas.isEmpty()) {
 	        pessoaDTO.setMensagem("A pessoa não existe");
@@ -103,7 +103,7 @@ public class PessoaService {
 	        return pessoaDTO;
 	    }
 
-	    List<Tarefa> tarefas = pessoaRepository.findByNomeAndPeriodo(nome, dataCriacao, duracao);
+	    List<Tarefa> tarefas = pessoaRepository.findByNameAndPeriod(nome, dataCriacao, duracao);
 	    
 	    if (tarefas.isEmpty()) {
 	        pessoaDTO.setMensagem("A tarefa não existe");
@@ -116,6 +116,4 @@ public class PessoaService {
 	    pessoaDTO.setSuccess(Boolean.TRUE);
 	    return pessoaDTO;
 	}
-	
-
 }

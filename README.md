@@ -4,6 +4,18 @@ O desafio foi realizado na linguagem de programação JAVA (Java 11), usando o S
 
 
 
+<h2>Versão do JAVA</h2>
+
+openjdk version "11.0.16.1" 2022-08-12 LTS
+
+
+
+<h2>IDE utilizado</h2>
+
+Spring Tool Suite 4
+
+
+
 <h2>application.properties</h2>
 
 Eu fiz algumas configurações para poder executar o projeto, como:

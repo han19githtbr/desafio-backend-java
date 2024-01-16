@@ -21,6 +21,8 @@ public class PessoaDTO {
     String nome;
 
     String departamento;
+
+    Long ordem_apresentacao;
        
     List<Tarefa> tarefas;
 	

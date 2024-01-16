@@ -17,6 +17,8 @@ public class DepartamentoDTO {
 
     String titulo;
        
+    Long ordem_apresentacao;
+    
     List<Pessoa> pessoas;
       
     List<Tarefa> tarefas;

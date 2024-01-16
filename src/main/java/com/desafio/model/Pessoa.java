@@ -6,6 +6,7 @@ package com.desafio.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,6 +46,12 @@ public class Pessoa {
         return getTarefas().stream().mapToLong(Tarefa::getDuracao).sum();
     }
     
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ordem_apresentacao")
+    private Long ordem_apresentacao;
+
+
     public PessoaDTO toDTO() {
         PessoaDTO pessoaDTO = new PessoaDTO();
         pessoaDTO.setId(this.id);

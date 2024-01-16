@@ -30,6 +30,8 @@ public class TarefaDTO {
 
     Long duracao;
 
+    Long ordem_apresentacao;
+
     boolean finalizado;
     
     Pessoa pessoa;

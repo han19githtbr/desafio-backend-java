@@ -55,5 +55,24 @@ public class Tarefa {
     public long getDuracao() {
         return Duration.between(dataCriacao, LocalDateTime.now()).toHours();
     }
+
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ordem_apresentacao")
+    private Long ordem_apresentacao;
+
+
+    public TarefaDTO toDTO() {
+    	TarefaDTO tarefaDTO = new TarefaDTO();
+        tarefaDTO.setId(this.id);
+        tarefaDTO.setTitulo(this.titulo);
+        tarefaDTO.setDescricao(this.descricao);
+        tarefaDTO.setPrazo(this.prazo);
+        tarefaDTO.setDepartamento(this.departamento.getTitulo());
+        tarefaDTO.setFinalizado(this.finalizado);
+        tarefaDTO.setDuracao(this.getDuracao());
+        return tarefaDTO;
+    }
+
 }  
-  
+    

@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -57,6 +58,18 @@ public class PessoaController {
 		PessoaDTO pessoaDTO = pessoaService.alterarPessoa(nome, pessoa);
 		return pessoaDTO;
 	}
+
+	@GetMapping("/getPessoasDepartamento/{departamentoId}/pessoas")
+    public List<Pessoa> getPessoasPorDepartamento(@PathVariable Long departamentoId) {
+        return pessoaService.getPessoasPorDepartamento(departamentoId);
+    }
+	
+	/*@GetMapping("/getPessoasDepartamentos/{departamentoId}/pessoas")
+    public ResponseEntity<List<Pessoa>> getPessoasPorDepartamento(@PathVariable Long departamentoId) {
+        List<Pessoa> pessoas = pessoaService.getPessoasPorDepartamento(departamentoId);
+        return ResponseEntity.ok().body(pessoas);
+    }*/
+	
 	
 	@GetMapping("/gastos")
     public PessoaDTO buscarPorNome(

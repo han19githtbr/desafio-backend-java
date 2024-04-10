@@ -62,6 +62,11 @@ public class PessoaService {
 		return pessoaDTO;
 	}	
 
+	
+	public List<Pessoa> getPessoasPorDepartamento(Long departamentoId) {
+        return pessoaRepository.findByDepartamentoId(departamentoId);
+    }
+	
 
 	private Long nextOrdem() {
 		List<Pessoa> pessoaDTO = pessoaRepository.ordemApresentacaoDesc();
@@ -82,6 +87,7 @@ public class PessoaService {
 			pessoaRepository.delete(pessoa);
 			pessoaDTO.setMensagem("A pessoa foi removida com sucesso");
 			pessoaDTO.setSuccess(Boolean.TRUE);
+			pessoaDTO.setId(pessoa.getId());
 		} else {
 			pessoaDTO.setMensagem("A pessoa não foi removida");
 			pessoaDTO.setSuccess(Boolean.FALSE);
@@ -134,7 +140,6 @@ public class PessoaService {
 			return pessoaDTO;
 		}
 	}
-
 	
 
 	public List<PessoaDTO> getAllPessoa() {
@@ -147,6 +152,7 @@ public class PessoaService {
 
 	    return pessoasDTO;
 	}
+	
 	
 	public PessoaDTO buscarPorNome(String nome, LocalDateTime dataCriacao, long duracao) {
 	    PessoaDTO pessoaDTO = new PessoaDTO();
@@ -193,5 +199,4 @@ public class PessoaService {
 			return pessoaDTO;
 		}
 	}
-
 }

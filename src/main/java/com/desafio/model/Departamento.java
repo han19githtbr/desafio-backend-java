@@ -46,5 +46,4 @@ public class Departamento {
         departamentoDTO.setTitulo(this.titulo);
         return departamentoDTO;
     }
-
 }

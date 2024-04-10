@@ -62,7 +62,7 @@ public class Tarefa {
     private Long ordem_apresentacao;
 
 
-    public TarefaDTO toDTO() {
+    /*public TarefaDTO toDTO() {
     	TarefaDTO tarefaDTO = new TarefaDTO();
         tarefaDTO.setId(this.id);
         tarefaDTO.setTitulo(this.titulo);
@@ -72,7 +72,27 @@ public class Tarefa {
         tarefaDTO.setFinalizado(this.finalizado);
         tarefaDTO.setDuracao(this.getDuracao());
         return tarefaDTO;
+    }*/
+    
+    
+    public TarefaDTO toDTO() {
+        TarefaDTO tarefaDTO = new TarefaDTO();
+        tarefaDTO.setId(this.id);
+        tarefaDTO.setTitulo(this.titulo);
+        tarefaDTO.setDescricao(this.descricao);
+        tarefaDTO.setPrazo(this.prazo);
+        
+        // Verificar se o departamento não é nulo antes de acessar seu título
+        if (this.departamento != null) {
+            tarefaDTO.setDepartamento(this.departamento.getTitulo());
+        } else {
+            tarefaDTO.setDepartamento(null); // ou outra ação adequada, dependendo do seu contexto
+        }
+        
+        tarefaDTO.setFinalizado(this.finalizado);
+        tarefaDTO.setDuracao(this.getDuracao());
+        return tarefaDTO;
     }
-
+  
 }  
     

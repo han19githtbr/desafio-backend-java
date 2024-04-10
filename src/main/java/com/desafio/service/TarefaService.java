@@ -40,7 +40,6 @@ public class TarefaService {
 			return tarefaDTO;
 		}
 	
-
 		if(tarefaRepository.checkTituloTarefa(tarefa.getTitulo()) != null ){
 			tarefaDTO.setSuccess(Boolean.FALSE);
 			tarefaDTO.setMensagem("Já existe uma tarefa com esse nome.");
@@ -60,7 +59,6 @@ public class TarefaService {
 		
 		tarefaDTO.setSuccess(Boolean.TRUE);
 		return tarefaDTO;
-	
 	}
 
 

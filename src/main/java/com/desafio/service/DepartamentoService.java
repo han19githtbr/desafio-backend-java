@@ -70,6 +70,7 @@ public class DepartamentoService {
 			departamentoRepository.delete(departamento);
 			departamentoDTO.setMensagem("O departamento foi removido com sucesso");
 			departamentoDTO.setSuccess(Boolean.TRUE);
+			departamentoDTO.setId(departamento.getId());
 		} else {
 			departamentoDTO.setMensagem("O departamento não foi removido");
 			departamentoDTO.setSuccess(Boolean.FALSE);

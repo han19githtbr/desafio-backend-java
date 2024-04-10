@@ -31,6 +31,10 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     List<Pessoa> findByName(@Param("nome") String nome);
 	
 	
+	@Query("SELECT p FROM Pessoa p WHERE p.departamento.id = :departamentoId")
+    List<Pessoa> findByDepartamentoId(@Param("departamentoId") Long departamentoId);
+	
+	
 	@Query("SELECT t FROM Tarefa t " +
 		       "JOIN t.pessoa p " +
 		       "WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :nome, '%')) " +

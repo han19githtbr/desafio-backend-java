@@ -104,3 +104,6 @@ Link para acessar o endpoint: <a>http://localhost:8090/tarefas/pendentes</a>
 
 10) Listar departamento e quantidade de pessoas e tarefas (get/departamentos)
 Link para acessar o endpoint: <a>http://localhost:8090/departamentos</a>
+
+
+//FROM openjdk:11.0.1-jdk-slim

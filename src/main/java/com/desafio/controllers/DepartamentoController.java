@@ -27,7 +27,10 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/departamentos")
-@CrossOrigin(origins = { "http://localhost:4200", "http://localhost" }, maxAge = 3600)
+//@CrossOrigin(origins = { "http://localhost:4200", "http://localhost" }, maxAge = 3600)
+@CrossOrigin(origins = { "https://gerenciatarefas.netlify.app/" }, maxAge = 3600)
+
+
 public class DepartamentoController {
 
 	@Autowired
